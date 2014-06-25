@@ -10,6 +10,7 @@ $url = new path('/');
 $page = $url->segment(1) ? $url->segment(1) : 'index';
 
 include 'template/header.html';
+include 'inc/messages.php';
 
 // Check if the page exists
 if (!include 'template/' . $page . '.html') {

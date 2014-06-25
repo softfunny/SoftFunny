@@ -5,5 +5,5 @@ mysqli_query($db, 'SET NAMES utf8');
 
 session_start();
 
-include 'render.php';
 include 'path.php';
+include 'post.php';
