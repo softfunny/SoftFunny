@@ -27,11 +27,11 @@ table {
 
 
 /* COMMON STYLES */
- header, footer {
+header, footer {
     clear: both;
 }
 /* Headings */
- h1 {
+h1 {
     font-size: 2em;
 }
 h2 {
@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5 {
     margin: .2em 0 1em 0;
 }
 /* Anchors */
- a {
+a {
     outline: 0;
 }
 a img {
@@ -73,7 +73,7 @@ a:hover, a:active {
     text-shadow: 1px 1px 1px #000;
 }
 /* Transitions */
- a:hover, a:active, .main-nav ul, .main-nav ul li:hover, .main-aside ul li:hover {
+a:hover, a:active, .main-nav ul, .main-nav ul li:hover, .main-aside ul li:hover {
     -webkit-transition: 0.4s;
     -ms-transition: 0.4s;
     -moz-transition: 0.4s;
@@ -83,7 +83,7 @@ a:hover, a:active {
 
 
 /* PAGE STYLES */
- #page {
+#page {
     background: #e7e7e7 url("../img/bg.png");
     font: normal 14px/150%'Trebuchet MS', Helvetica, sans-serif;
     clear: both;
@@ -95,7 +95,7 @@ a:hover, a:active {
 }
 
 /* Header */
- .main-header {
+.main-header {
     background-image: url('../img/header-bkg.png');
     color: white;
     font: 14px/150% bold;
@@ -104,7 +104,7 @@ a:hover, a:active {
 }
 
 /* Navigation */
- .main-nav ul {
+.main-nav ul {
     overflow: hidden;
     background-color: #ff7813;
     border-bottom: solid #11224D 3px;
@@ -130,25 +130,25 @@ a:hover, a:active {
 }
 
 /* Articles */
- .jokes {
-    max-width: 80%;
+.jokes {
+    max-width: 75%;
     float: right;
+    margin: 2% 2%;
 }
 
 .jokes header h1 {
+    width: 90%;
     background-color: #11224D;
     color: #ffffff;
     font-family: 'PT Sans', Tahoma, sans-serif;
     font-size: 18px;
     font-style: italic;
-    padding-left: 20px;
-    padding-bottom: 5px;
-    text-align: left;
+    padding: 10px;
+    margin-left: 15px;
     border-radius: 5px;
 }
 .post {
     display: inline-block;
-    max-width: 20%;
     padding: 15px;
     margin: 0 20px 30px 0;
     border-radius: 10px;
@@ -186,10 +186,10 @@ a:hover, a:active {
 }
 
 /* Aside */
- .main-aside {
+.main-aside {
     float: left;
     width: 15%;
-    margin-left: 20px;
+    margin: 2% 2%;
 }
 .main-aside ul li {
     display: block;
@@ -200,10 +200,11 @@ a:hover, a:active {
     font-family: 'Open Sans', sans-serif;
 }
 
-.aside-header h1 {
+.main-aside header h1 {
     color: white;
     background-color: #ff7813;
     padding: 5px;
+    margin-left: 15px;
     text-align: center;
     font-family: 'PT Sans', Tahoma, sans-serif;
     font-size: 20px;
@@ -219,7 +220,7 @@ a:hover, a:active {
 }
 
 /* Footer */
- .main-footer {
+.main-footer {
     background-image: url('../img/footer-bkg.png');
     color: white;
     padding: 1px;
@@ -233,42 +234,46 @@ a:hover, a:active {
 
 
 /* Screens */
- @media screen and (max-width: 1620px) {
+@media screen and (max-width: 1920px) {
     .jokes {
-        max-width: 79.4%;
+        float: right;
     }
     .post {
-        max-width: 19%;
+        display: inline-block;
+        max-width: 40%;
+    }
+    .post:last-of-type {
+        display: inline-block;
     }
 }
-@media screen and (max-width: 1350px) {
-    .post {
-        max-width: 18%;
-    }
-}
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1280px) {
     .jokes {
-        max-width: 77%;
+        max-width: 75%;
     }
-    .post:last-child {
-        display: none;
+    .jokes header h1 {
+        max-width: 100%;
     }
     .post {
         max-width: 25%;
     }
-}
-@media screen and (max-width: 990px) {
-    .jokes {
-        max-width: 70%;
+    .post:last-of-type {
+        display: none;
     }
-    .post:last-child {
+    
+}
+@media screen and (max-width: 1024px) {
+    .post {
+        max-width: 36%;
+        float: left;
+    }
+    .main-aside header h1 {
+        width: 100%;
+    }
+    .post:last-of-type {
         display: inline-block;
     }
-    .post {
-        max-width: 39%;
-    }
 }
-@media screen and (max-width: 815px) {
+@media screen and (max-width: 824px) {
     .main-nav ul {
         max-height: 0
     }
@@ -292,13 +297,18 @@ a:hover, a:active {
         padding: 15px 10px;
         cursor: pointer;
     }
-    .main-aside, .jokes, .post {
-        clear: both;
-        float: left;
-        margin-left: 1%;
-        min-width: 96%;
+    .jokes {
+        min-width: 98%;
+    }
+    .post {
+        min-width: 90%;
+    }
+    .jokes header h1, .main-aside header h1 {
+        margin-left: 0;
+        min-width: 95%;
     }
     .main-aside {
+        width: 100%;
         text-align: center;
     }
 }

@@ -16,4 +16,5 @@ if (!include 'template/' . $page . '.html') {
     include 'template/404.html';
 }
 
+include 'template/aside.html';
 include 'template/footer.html';
