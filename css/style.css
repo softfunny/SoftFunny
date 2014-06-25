@@ -118,9 +118,16 @@ main {
 /* Header */
  .main-header {
     background-image: url('../img/header-bkg.png');
-    font: 14px/150% bold;
     font-family: 'PT Sans', Tahoma, sans-serif;
     font-style: italic;
+}
+
+.main-header .logo {
+    position: relative;
+    right: 0;
+    background: url('../img/logo.png') no-repeat 0 0;
+    width: 250px;
+    height: 100px;
 }
 
 /* Navigation */
@@ -161,7 +168,7 @@ main {
 }
 
 /*Styling for h1 tags used for titles in main content*/
-main h1, main section h1 {
+main h1, main section header h1 {
     background-color: #11224D;
     padding: 10px;
     text-align: center;
@@ -289,8 +296,9 @@ main h1, main section h1 {
 /* User Panel */
 .user-panel {
     float: right;
-    font-weight: bold;
+    margin-bottom: 10px;
     color: black;
+    font-weight: bold;
 }
 .user-panel a {
     color: black;
