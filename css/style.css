@@ -201,34 +201,38 @@ main header h1, main section header h1 {
 }
 
 /* Section Styling About Page */
-.team-member {
+#team {
     display: inline-block;
-    margin: 5px
+    margin: 5px;
+    width: 100%;
 }
-.team-member figure {
-    margin: 5px
+#team figure {
+    margin: 5px;
+    float: left;
+    display: block;
 }
-.team-member figcaption {
+#team figcaption {
     color: black;
     font-weight: bold;
+    text-align: left;
 }
-.team-member img {
+#team img {
     border: 10px solid #ffffff;
     box-shadow: 1px 1px 1px #000, 1px 1px 1px #000;
 }
 
-.team-member a {
+#team a {
     font-size: 12px;
     font-style: italic;
     background-color: #11224D;
     color: #ffffff;
-    float: right;
-    margin: 0 15px 15px 0;
-    padding: 5px;
+    margin: 25px 0px;
+    padding: 3px;
     border-radius: 5px;
+    float: right;
 }
 
-.team-member a:hover {
+#team a:hover {
     background-color: #ff7813;
 }
 
