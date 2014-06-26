@@ -7,7 +7,7 @@ if (isset($_POST['LOGIN'])) {
 
 // Validation
     if (empty($username) || empty($pass1)) {
-        $notice['warning'][] = 'Username and password are required!';
+        $notice['warning'][] = 'Моля попълнете всички полета!';
     } else {
         $check = 'SELECT * FROM users WHERE username="' . $username . '" AND password="' . $pass1 . '"';
         $result = mysqli_query($db, $check);
@@ -19,7 +19,7 @@ if (isset($_POST['LOGIN'])) {
             $_SESSION['level'] = $row['level'];
             echo '<meta http-equiv="refresh" content="0; url=index">';
         } else {
-            $notice['error'][] = 'Wrong username or password!';
+            $notice['error'][] = 'Грешни входни данни!';
         }
     }
 }
@@ -33,19 +33,19 @@ if (isset($_POST['REGISTER'])) {
 
 // Validation
     if (empty($username) || empty($pass1)) {
-        $notice['warning'][] = 'Username and password are required.';
+        $notice['warning'][] = 'Моля попълнете задължителните полета!';
     }
     if (!empty($username) && !preg_match('/^\w{5,12}$/', $username)) {
-        $notice['warning'][] = 'The username must contain only alphanumeric and be between 5 and 12 characters!';
+        $notice['warning'][] = 'Потребителското име може да съдържа само букви и цифри между 5 и 12 символа!';
     }
     if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $notice['error'][] = 'The email is not valid!';
+        $notice['error'][] = 'Моля въведете валиден Email адрес!';
     }
     if (!empty($pass1) && $pass1 == $pass2 && strlen($pass1) < 5) {
-        $notice['error'][] = 'The password is too short!';
+        $notice['error'][] = 'Паролата е твърде кратка!';
     }
     if ($pass1 != $pass2) {
-        $notice['error'][] = 'The passwords does not match!';
+        $notice['error'][] = 'Паролите не съвпадат!';
     }
 
     if (!isset($notice)) {
@@ -55,7 +55,7 @@ if (isset($_POST['REGISTER'])) {
         $result = mysqli_query($db, $chek);
 
         if ($result->num_rows > 0) {
-            $notice['error'][] = 'The username or the email is already in use!';
+            $notice['error'][] = 'Потребителското име или Email-а са заети!';
         }
     }
 
@@ -63,78 +63,46 @@ if (isset($_POST['REGISTER'])) {
     if (!isset($notice)) {
         $ip = ip2long($_SERVER['REMOTE_ADDR']);
         $level = "1";
-        if (!empty($email)) {
-            $insert = 'INSERT INTO users (id, username, password, email, ip, level)
+
+        $insert = 'INSERT INTO users (id, username, password, email, ip, level)
 		   VALUES (NULL, "' . $username . '", "' . $pass1 . '", "' . $email . '", "' . $ip . '", "' . $level . '");';
-        } else {
-            $insert = 'INSERT INTO users (id, username, password, email, ip, level)
-		   VALUES (NULL, "' . $username . '", "' . $pass1 . '", "' . $username . '", "' . $ip . '", "' . $level . '");';
-        }
+
         if (mysqli_query($db, $insert)) {
             $_SESSION['username'] = $username;
             $_SESSION['id'] = mysqli_insert_id($db);
-            $notice['success'][] = "You have successfully registered, $username!";
+            $notice['success'][] = "Успешно се регистрирахте, $username!";
             echo '<meta http-equiv="refresh" content="0; url=index">';
         } else {
-            $notice['error'][] = 'An error occured!';
+            $notice['error'][] = 'Възникна грешка! Моля опитайте отново.';
         }
     }
 }
 
 // COMMENTS
-if (isset($_POST['ADD_POST'])) {
-    $comment = mysqli_real_escape_string($db, trim($_POST['comment']));
+if (isset($_POST['POST'])) {
+    $title = htmlspecialchars(mysqli_real_escape_string($db, trim($_POST['title'])));
+    $content = mysqli_real_escape_string($db, trim($_POST['content']));
 
-    if (empty($comment) || strlen($comment) < 4 || strlen($comment) > 250) {
-        $notice['warning'][] = 'Your comment must be between 5 and 250 characters.';
+    if (empty($title) || empty($content)) {
+        $notice['info'][] = 'Моля попълнете всички полета.';
+    }
+    if (strlen($title) < 3 || strlen($title) > 50) {
+        $notice['warning'][] = 'Заглавието трябва да е между 3 и 50 символа!';
+    }
+    if (strlen($content) < 20) {
+        $notice['warning'][] = 'Публикацията трябва да е по-дълга от 20 символа!';
     }
     if (!isset($notice)) {
-// BB Code integrate
-        $comment3 = $comment;
-        $patterns = array(
-            "/\[link\](.*?)\[\/link\]/",
-            "/\[url\](.*?)\[\/url\]/",
-            "/\[b\](.*?)\[\/b\]/",
-            "/\[u\](.*?)\[\/u\]/",
-            "/\[i\](.*?)\[\/i\]/"
-        );
-        $replacements = array(
-            "<a href=\"\\1\">\\1</a>",
-            "<a href=\"\\1\">\\1</a>",
-            "<strong>\\1</strong>",
-            "<u>\\1</u>",
-            "<i>\\1</i>"
-        );
-        $comment = preg_replace($patterns, $replacements, $comment);
-        $patterns4 = array(
-            "/\[link\](.*?)\[\/link\]/",
-            "/\[url\](.*?)\[\/url\]/",
-            "/\[img\](.*?)\[\/img\]/",
-            "/\[b\](.*?)\[\/b\]/",
-            "/\[u\](.*?)\[\/u\]/",
-            "/\[i\](.*?)\[\/i\]/"
-        );
-        $replacements4 = array(
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        );
-        $comment3 = preg_replace($patterns4, $replacements4, $comment3);
 
-// Sign up the information
-        $author_id = $_SESSION['id'];
-        $post_id = (int) $_POST['post_id'];
-
-        $insert = 'INSERT INTO comments (comment_id, post_id, comment, date_added, author_id)
-                   VALUES (NULL, ' . $post_id . ', "' . $comment . '", ' . time() . ', ' . $author_id . ')';
+        // Sign up the information
+        $insert = 'INSERT INTO entries (id, author, time, title, content)
+                   VALUES (NULL,' . $_SESSION['id'] . ', ' . time() . ', "' . $title . '", "' . $content . '");'
+                or die(mysqli_error());
         if (mysqli_query($db, $insert)) {
-            $notice['success'][] = 'Thanks for the comment!';
-            echo '<meta http-equiv="refresh" content="0">';
+            $notice['success'][] = 'Благодарим за публикацията!';
+            echo '<meta http-equiv="refresh" content="2; url=index">';
         } else {
-            $notice['error'][] = 'An error occured!';
+            $notice['error'][] = 'Възникна грешка! Моля опитайте отново.';
         }
     }
 }

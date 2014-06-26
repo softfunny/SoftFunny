@@ -7,3 +7,4 @@ session_start();
 
 include 'path.php';
 include 'post.php';
+include 'data.php';

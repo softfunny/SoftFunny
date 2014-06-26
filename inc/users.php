@@ -7,4 +7,4 @@ if (isset($_SESSION['username'])) {
     echo 'Guest [<a href="login">login</a>]';
 }
 
-echo '</aside>';
+echo '</aside><main>';
