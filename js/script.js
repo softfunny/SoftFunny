@@ -76,8 +76,10 @@ function displayMessage(type, text) {
     message.innerHTML = text;
 
     var main = document.getElementsByTagName('main')[0];
-    //main.insertBefore(message, main.firstChild);
-    main.appendChild(message);
+    var form = document.getElementsByClassName('formee')[0];
+    main.insertBefore(message, form); // Before content
+    
+    //main.appendChild(message); // After content
 }
 
 function remove(name, time) {

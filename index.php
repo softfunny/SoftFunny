@@ -8,6 +8,7 @@ $isLogged = isset($_SESSION['username']);
 
 include 'template/header.html';
 include 'inc/users.php';
+include 'inc/messages.php';
 
 if ($isLogged) {
     if ($page == 'login' || $page == 'register') {
@@ -27,14 +28,6 @@ if ($page === 'index') {
     if (!include 'template/' . $page . '.html') { // Check if the page exists
         include 'template/404.html';
     }
-}
-
-include 'inc/messages.php';
-
-if ($isLogged) {
-    include 'template/post-button.html';
-} else {
-    include 'template/reg-button.html';
 }
 
 include 'template/aside.html';

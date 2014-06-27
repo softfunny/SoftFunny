@@ -7,7 +7,7 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
     margin:0;
     padding:0
 }
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+article, aside, footer, header, menu, nav, section {
     display:block
 }
 a {
@@ -32,7 +32,7 @@ table {
 }
 
 /* COMMON STYLES */
-main, header, footer {
+main, header, footer, section, .formee {
     clear: both
 }
 
@@ -95,19 +95,26 @@ a:hover, a:active, .main-nav ul, .main-nav ul li:hover, .main-aside ul li:hover 
 .clear {
     clear:both;
 }
-
+.bold {
+    font-weight: bold;
+}
+.strong, .strong a {
+    color: black;
+}
 /* PAGE STYLES */
 #page {
     background: url("../img/bg.png") #e7e7e7;
     font: normal 14px/150%'Trebuchet MS', Helvetica, sans-serif;
     color: white;
     margin: 0 auto;
-    width: 85%
+    width: 90%
 }
 main {
-    float: right;
-    min-width: 80%;
     margin: 1% 0%;
+    text-align: center;
+}
+form, section, aside {
+    text-align: left;
 }
 
 /* Header TODO */
@@ -148,7 +155,14 @@ main {
 }
 
 /* Articles */
+.jokes {
+    min-width: 80%;
+    float: right;
+    text-align: center;
+}
+
 .post {
+    min-width: 25%;
     display: inline-block;
     padding: 15px;
     margin: 0 20px 30px 0;
@@ -236,22 +250,20 @@ main header h1, main section header h1 {
     background-color: #ff7813;
 }
 
-/* Post button */
-.post-button {
-    width: 20%;
-    height: 10%;
-}
-.post-button a {
-    display: inline-block;
-    text-align: center;
-    margin: 5% 0 0 15%;
-    padding: 2% 15%;
-    background: transparent;
+.formee {
+        min-width: 80%;
+        float: right;
+    }
+
+/* Button */
+a.button {
+    margin: 10px;
+    padding: 5px 15px;
     border: 2px solid #11224D;
     font-weight: bold;
     color: #11224D;
 }
-.post-button a:hover {
+a.button:hover {
     background: #11224D;
     border: 2px solid #11224D;
     color: white;
@@ -261,7 +273,7 @@ main header h1, main section header h1 {
 .main-aside {
     float: left;
     width: 15%;
-    margin: 1% 2%;
+    margin: 5px 2%;
 }
 .main-aside ul li {
     display: block;
@@ -275,7 +287,6 @@ main header h1, main section header h1 {
 .main-aside header h1 {
     background-color: #ff7813;
     padding: 5px;
-    margin: 0%;
     text-align: center;
     font-size: 20px;
     box-shadow: 1px 1px 1px #000;
@@ -285,17 +296,6 @@ main header h1, main section header h1 {
 .aside-nav ul li a:hover {
     text-shadow: none;
     border-bottom: solid #11224D 2px;
-}
-
-/* User Panel */
-.user-panel {
-    float: right;
-    margin-top: 10px;
-    color: black;
-    font-weight: bold;
-}
-.user-panel a {
-    color: black;
 }
 
 /* Footer */
@@ -311,33 +311,28 @@ main header h1, main section header h1 {
 }
 
 /* Screens */
-@media screen and (max-width: 1620px) {
-    .post {
-        max-width: 19%;
-    }
-}
-@media screen and (max-width: 1350px) {
-    .post {
-        max-width: 18%;
-    }
-}
-@media screen and (max-width: 1150px) {
-    .post:last-child {
-        display: none;
+@media screen and (max-width: 1280px) {
+    .jokes {
+        max-width: 80%;
+        float: right;
+        text-align: center;
     }
     .post {
         max-width: 25%;
     }
 }
-@media screen and (max-width: 990px) {
-    .post:last-child {
-        display: inline-block;
+@media screen and (max-width: 960px) {
+    .jokes {
+        max-width: 80%;
+        float: right;
+        text-align: center;
     }
     .post {
-        max-width: 39%;
+        min-width: 90%;
+        margin-right: 0;
     }
 }
-@media screen and (max-width: 815px) {
+@media screen and (max-width: 768px) {
     .main-nav ul {
         max-height: 0px;
         border: none;
@@ -363,16 +358,27 @@ main header h1, main section header h1 {
         padding: 15px 10px;
         cursor: pointer;
     }
-    .main-content {
-        width: 100%;
+    .jokes {
+        min-width: 100%;
+        text-align: center;
     }
-    .main-aside, .jokes, .post {
-        clear: both;
-        float: left;
-        margin-left: 1%;
-        min-width: 96%;
+    .post {
+        min-width: 90%;
+        margin-right: 0;
     }
     .main-aside {
+        min-width: 95%;
         text-align: center;
+        float: left;
+    }
+    .main-aside ul li {
+        margin: 0;
+    }
+    .formee {
+        min-width: 100%;
+        text-align: center;
+    }
+    .formee div {
+        width: 97%;
     }
 }
