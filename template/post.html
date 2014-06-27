@@ -1,15 +1,23 @@
 <form class="formee" method="post" action="post">
     <fieldset>
         <legend>Публикувай</legend>
-
-        <div class="grid-4-12">
-            <input type="text" name="title">
+        <div class="grid-2-12">
+            <select name="categoty" id="category-select" onchange="changeInputFormat()">
+                <option value="joke">Бисер</option>
+                <option value="picture">Картинка</option>
+                <option value="video">Видео</option>
+            </select>
         </div>
-        <div class="grid-6-12 clear">
-            <textarea rows="10" cols="20" name="content"></textarea>
+
+        <div class="grid-4-12" id="input-field">
+            <input type="text" name="title" id="title" placeholder="Заглавие...">
+        </div>
+
+        <div class="grid-6-12 clear" id="text-field">
+            <textarea name="content" id="content"></textarea>
         </div>
         <div class="grid-12-12 clear">
-            <input type="submit" name="POST" value="Публикувай">
+            <input type="button" name="POST" id="post" value="Публикувай" onclick="postValidate()">
         </div>
     </fieldset>
 </form>

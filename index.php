@@ -21,15 +21,15 @@ if ($isLogged) {
     }
 }
 
-include 'inc/messages.php';
-
-if ($page == 'index') {
+if ($page === 'index') {
     include 'inc/content.php';
 } else {
     if (!include 'template/' . $page . '.html') { // Check if the page exists
         include 'template/404.html';
     }
 }
+
+include 'inc/messages.php';
 
 if ($isLogged) {
     include 'template/post-button.html';
