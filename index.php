@@ -3,8 +3,15 @@
 include 'inc/config.php';
 
 $url = new path('/');
+$lastPage = $page;
 $page = $url->segment(1) ? $url->segment(1) : 'index';
 $isLogged = isset($_SESSION['username']);
+
+if ($page == 'logout') {
+    session_start();
+    session_destroy();
+    $page = 'index';
+}
 
 include 'template/header.html';
 include 'inc/users.php';

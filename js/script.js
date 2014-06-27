@@ -1,5 +1,12 @@
 function show() {
-    document.getElementById('menu').classList.toggle('toggle');
+    var menu = document.getElementById('menu');
+    
+    if(menu.className == 'toggle') {
+        menu.className = '';
+    }
+    else {
+        menu.className = 'toggle';
+    }
 }
 
 function loginValidation() {
@@ -52,7 +59,7 @@ function validation(id, text) {
             element.className = 'formee-error';
             displayMessage('formee-msg-error', text);
 
-            remove('formee-msg-error', 2000);
+            remove('formee-msg-error', 4000);
 
             valid = false;
         }

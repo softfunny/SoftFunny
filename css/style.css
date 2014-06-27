@@ -104,7 +104,7 @@ a:hover, a:active, .main-nav ul, .main-nav ul li:hover, .main-aside ul li:hover 
 /* PAGE STYLES */
 #page {
     background: url("../img/bg.png") #e7e7e7;
-    font: normal 14px/150%'Trebuchet MS', Helvetica, sans-serif;
+    font: normal 16px/150% 'PT Sans' , Helvetica, sans-serif;
     color: white;
     margin: 0 auto;
     width: 90%
@@ -120,8 +120,7 @@ form, section, aside {
 /* Header TODO */
 .main-header {
     background-image: url('../img/header-bkg.png');
-    font-family: 'PT Sans', Tahoma, sans-serif;
-    font-style: italic;
+    
 }
 .main-header .logo {
     width: 230px;
@@ -137,32 +136,35 @@ form, section, aside {
 }
 .main-nav ul li {
     display: inline-block;
-    padding: 5px;
+    
     background-color: #ff7813;
     text-shadow: 1px 1px 1px #000, 1px 1px 1px #000;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
+.main-nav ul li a {
+    display: inline-block;
+    padding: 10px;
+}
 .main-nav ul li:hover {
     text-shadow: 1px 1px 1px #000, 1px 1px 1px #000;
-    background-color: transparent;
+    background-color: #ff9c51;
 }
 .menu {
     display: none;
 }
-.menu:hover {
-    background-color: transparent;
-}
+
 
 /* Articles */
 .jokes {
+    max-width: 80%;
     min-width: 80%;
     float: right;
     text-align: center;
 }
 
 .post {
-    min-width: 25%;
+    min-width: 24%;
     display: inline-block;
     padding: 15px;
     margin: 0 20px 30px 0;
@@ -251,9 +253,9 @@ main header h1, main section header h1 {
 }
 
 .formee {
-        min-width: 80%;
-        float: right;
-    }
+    min-width: 80%;
+    float: right;
+}
 
 /* Button */
 a.button {
@@ -341,22 +343,24 @@ a.button:hover {
         max-height: 20em;
         padding: 0
     }
-    .main-nav ul li {
+    .main-nav ul li, .main-nav ul li a {
         width: 100%;
-        padding: 10px;
+        padding: 10px 0;
         text-align: center;
         border-radius: 0px;
     }
     .menu {
         display: block;
         text-align: center;
-        width: 100%;
         background-color: #ff7813;
         color: #ffffff;
         text-shadow: 1px 1px 1px #000, 1px 1px 1px #000;
         box-sizing: border-box;
         padding: 15px 10px;
         cursor: pointer;
+    }
+    .menu:hover {
+        background-color: #ff9c51;
     }
     .jokes {
         min-width: 100%;
