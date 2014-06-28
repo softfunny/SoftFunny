@@ -163,20 +163,31 @@ form, section, aside {
 
 
 /* Articles */
-.jokes {
+.main-content {
     max-width: 80%;
     min-width: 80%;
     float: right;
     text-align: center;
 }
 
-.jokes article {
+.main-content header h1 {
+    background-color: #11224D;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.main-content article {
     color: #11224D;
     padding: 2%;
 }
 
 .post {
-    min-width: 24%;
+    height: 170px;
+    max-width: 25%;
     display: inline-block;
     padding: 15px;
     margin: 0 20px 30px 0;
@@ -217,42 +228,28 @@ form, section, aside {
     box-shadow: 1px 1px 2px #000, 1px 1px 2px #000;
 }
 
-/*Styling for h1 tags used for titles in main content*/
-main header h1, main section header h1 {
-    background-color: #11224D;
-    padding: 10px;
-    text-align: center;
-    font-size: 20px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    text-shadow: 1px 1px 1px #000;
-}
 
-/* Section Styling About Page */
-#team {
+/* Team About Page */
+.team {
     max-width: 80%;
     min-width: 80%;
-    float: right;
-    text-align: center;
 }
-#team figure {
+.team figure {
     margin: 5px;
-    float: left;
-    display: block;
+    display: inline-block;
     width: 170px;
 }
-#team figcaption {
+.team figcaption {
     color: black;
     font-weight: bold;
     text-align: left;
     font-size: 12px;
 }
-#team img {
+.team img {
     border: 10px solid #ffffff;
     box-shadow: 1px 1px 1px #000, 1px 1px 1px #000;
 }
-
-#team a {
+.team a {
     font-size: 12px;
     font-style: italic;
     background-color: #11224D;
@@ -262,35 +259,27 @@ main header h1, main section header h1 {
     border-radius: 5px;
     float: right;
 }
-
-#team a:hover {
+.team a:hover {
     background-color: #ff7813;
 }
 
 /*Styling for team members individual pages*/
-
 .team-member-interview img {
     border: 10px solid #ffffff;
     box-shadow: 1px 1px 1px #000, 1px 1px 1px #000;
     margin: 0;
     float: right;
 }
-
 .team-member-interview p {
     font-size: 14px;
     width: 50%;
     text-align: left;
     margin-left: 10px;
 }
-
 .team-member-interview p.answer {
     margin-bottom: 25px;
 }
 
-.formee {
-    min-width: 80%;
-    float: right;
-}
 
 /* Button */
 a.button {
@@ -304,6 +293,10 @@ a.button:hover {
     background: #11224D;
     border: 2px solid #11224D;
     color: white;
+}
+.formee {
+    min-width: 80%;
+    float: right;
 }
 
 /* Main Aside */
@@ -349,7 +342,7 @@ a.button:hover {
 
 /* Screens */
 @media screen and (max-width: 1280px) {
-    .jokes {
+    .main-content {
         max-width: 80%;
         float: right;
         text-align: center;
@@ -359,7 +352,7 @@ a.button:hover {
     }
 }
 @media screen and (max-width: 960px) {
-    .jokes {
+    .main-content {
         max-width: 80%;
         float: right;
         text-align: center;
@@ -397,7 +390,7 @@ a.button:hover {
     .menu:hover {
         background-color: #ff9c51;
     }
-    .jokes {
+    .main-content {
         min-width: 100%;
         text-align: center;
     }

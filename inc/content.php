@@ -1,4 +1,4 @@
-<section class="jokes">
+<section class="main-content">
     <?php
     if ($page == 'jokes') {
         $pageTitle = 'Вицове и бисери';
@@ -16,8 +16,6 @@
     </header>
 
     <?php
-    
-    echo $page;
 
     while ($row = mysqli_fetch_assoc($content)) {
         $date = date('d.m.Y, H:i:s', $row['time']);
