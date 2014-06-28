@@ -1,6 +1,18 @@
 <section class="jokes">
+    <?php
+    if ($page == 'jokes') {
+        $pageTitle = 'Вицове и бисери';
+    } else if ($page == 'pictures') {
+        $pageTitle = 'Забавни снимки';
+    } else if ($page == 'video') {
+        $pageTitle = 'Смешни клипове';
+    } else {
+        $pageTitle = 'Полулярни смешки';
+    }
+    ?>
+
     <header>
-        <h1>Популярни бисери</h1>
+        <h1><?= $pageTitle ?></h1>
     </header>
 
     <?php

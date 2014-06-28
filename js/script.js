@@ -1,7 +1,7 @@
 function show() {
     var menu = document.getElementById('menu');
-    
-    if(menu.className == 'toggle') {
+
+    if (menu.className === 'toggle') {
         menu.className = '';
     }
     else {
@@ -21,6 +21,13 @@ function registrationValidation() {
             validation('pass', 'Въведете парола') &&
             validation('pass2', 'Въведете парола')) {
         submit('register');
+    }
+}
+
+function contactsValidation() {
+    if (validation('about', 'Моля въведете тема!') &&
+            validation('contacts', 'Моля въведете съобщение!')) {
+        submit('message');
     }
 }
 
@@ -71,12 +78,6 @@ function validation(id, text) {
     return valid;
 }
 
-function submit(id) { // TODO: Submit on Enter pressed
-    var button = document.getElementById(id);
-    button.setAttribute('type', 'submit');
-    button.click();
-}
-
 function displayMessage(type, text) {
     var message = document.createElement('div');
     message.setAttribute('class', type);
@@ -84,9 +85,17 @@ function displayMessage(type, text) {
 
     var main = document.getElementsByTagName('main')[0];
     var form = document.getElementsByClassName('formee')[0];
-    main.insertBefore(message, form); // Before content
-    
-    //main.appendChild(message); // After content
+
+    if (!document.getElementsByClassName('formee-msg-error')[0]) {
+        main.insertBefore(message, form); // Before content  
+    }
+}
+
+function submit(id) { // TODO: Submit on Enter pressed
+    var button = document.getElementById(id);
+    button.setAttribute('type', 'submit');
+
+    button.click();
 }
 
 function remove(name, time) {

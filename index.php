@@ -3,7 +3,6 @@
 include 'inc/config.php';
 
 $url = new path('/');
-$lastPage = $page;
 $page = $url->segment(1) ? $url->segment(1) : 'index';
 $isLogged = isset($_SESSION['username']);
 
@@ -11,11 +10,8 @@ if ($page == 'logout') {
     session_start();
     session_destroy();
     $page = 'index';
+    echo $returnToIndex;
 }
-
-include 'template/header.html';
-include 'inc/users.php';
-include 'inc/messages.php';
 
 if ($isLogged) {
     if ($page == 'login' || $page == 'register') {
@@ -29,11 +25,16 @@ if ($isLogged) {
     }
 }
 
+include 'template/header.html';
+include 'inc/users.php';
+include 'inc/messages.php';
+
 if ($page === 'index') {
     include 'inc/content.php';
 } else {
     if (!include 'template/' . $page . '.html') { // Check if the page exists
-        include 'template/404.html';
+        //include 'template/404.html';
+        include 'inc/content.php';
     }
 }
 
