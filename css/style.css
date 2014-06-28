@@ -255,6 +255,15 @@ main header h1, main section header h1 {
     background-color: #ff7813;
 }
 
+/*Styling for team members individual pages*/
+
+#team-member-interview {
+    max-width: 80%;
+    min-width: 80%;
+    float: right;
+    text-align: center;
+}
+
 .formee {
     min-width: 80%;
     float: right;
