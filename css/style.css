@@ -101,6 +101,13 @@ a:hover, a:active, .main-nav ul, .main-nav ul li:hover, .main-aside ul li:hover 
 .strong, .strong a {
     color: black;
 }
+
+.cyan-big {
+    color: darkcyan;
+    font-weight:bold;
+    font-size:1.2em;
+}
+
 /* PAGE STYLES */
 #page {
     background: url("../img/bg.png") #e7e7e7;
@@ -161,6 +168,11 @@ form, section, aside {
     min-width: 80%;
     float: right;
     text-align: center;
+}
+
+.jokes article {
+    color: #11224D;
+    padding: 2%;
 }
 
 .post {
@@ -290,24 +302,6 @@ main header h1, main section header h1 {
 
 #team-member-interview article p.answer {
     margin-bottom: 25px;
-}
-
-/*Styling for seminars page*/
-
-.jokes article {
-    color: #11224D;
-    padding: 2%;
-}
-
-.jokes article figure {
-    width: 500px;
-    margin: 0 auto;
-}
-
-.cyan-big {
-    color: darkcyan;
-    font-weight:bold;
-    font-size:1.2em;
 }
 
 .formee {
