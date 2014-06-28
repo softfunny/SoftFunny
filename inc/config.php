@@ -5,6 +5,10 @@ mysqli_query($db, 'SET NAMES utf8');
 
 session_start();
 
+$siteUrl = 'http://i.softuni-friends.org/';
+$template = 'template/';
+$includes = 'inc/';
+
 include 'path.php';
 include 'post.php';
 include 'data.php';

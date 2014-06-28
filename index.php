@@ -25,18 +25,18 @@ if ($isLogged) {
     }
 }
 
-include 'template/header.html';
-include 'inc/users.php';
-include 'inc/messages.php';
+include $template . 'header.html';
+include $includes . 'users.php';
+include $includes . 'messages.php';
 
 if ($page === 'index') {
-    include 'inc/content.php';
+    include $includes . 'content.php';
 } else {
-    if (!include 'template/' . $page . '.html') { // Check if the page exists
-        //include 'template/404.html';
-        include 'inc/content.php';
+    if (!include $template . $page . '.html') { // Check if the page exists
+        include $template . '404.html';
+        //include 'inc/content.php';
     }
 }
 
-include 'template/aside.html';
-include 'template/footer.html';
+include $template . 'aside.html';
+include $template . 'footer.html';

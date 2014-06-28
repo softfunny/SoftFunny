@@ -43,14 +43,15 @@ if (isset($_POST['REGISTER'])) {
     if (!isset($notice)) {
         $ip = ip2long($_SERVER['REMOTE_ADDR']);
         $level = "1";
+        
+        $email = $email ? $email : $username;
 
         $insert = 'INSERT INTO users (id, username, password, email, ip, level)
-		   VALUES (NULL, "' . $username . '", "' . $pass1 . '", "' . $email || $username . '", "' . $ip . '", "' . $level . '");';
+		   VALUES (NULL, "' . $username . '", "' . $pass1 . '", "' . $email . '", "' . $ip . '", "' . $level . '");';
 
         if (mysqli_query($db, $insert)) {
             $_SESSION['username'] = $username;
             $_SESSION['id'] = mysqli_insert_id($db);
-            $notice['success'][] = "Успешно се регистрирахте, $username!";
             echo $returnToIndex;
         } else {
             $notice['error'][] = $errorText;
