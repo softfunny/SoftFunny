@@ -102,11 +102,6 @@ a:hover, a:active, .main-nav ul, .main-nav ul li:hover, .main-aside ul li:hover 
     color: black;
 }
 
-.cyan-big {
-    color: darkcyan;
-    font-weight:bold;
-    font-size:1.2em;
-}
 
 /* PAGE STYLES */
 #page {
@@ -263,21 +258,43 @@ form, section, aside {
     background-color: #ff7813;
 }
 
-/*Styling for team members individual pages*/
-.team-member-interview img {
-    border: 10px solid #ffffff;
-    box-shadow: 1px 1px 1px #000, 1px 1px 1px #000;
-    margin: 0;
-    float: right;
-}
-.team-member-interview p {
+.team p {
     font-size: 14px;
     width: 50%;
     text-align: left;
     margin-left: 10px;
 }
-.team-member-interview p.answer {
+.team p.answer {
     margin-bottom: 25px;
+}
+
+/*Styling for Seminars Page*/
+
+.main-content.seminars figcaption {
+    font-style: italic;
+    font-size: 14px;
+}
+
+.main-content.seminars figcaption h3 {
+    font-size: 20px;
+    font-weight: bold;
+    font-style: normal;
+    margin: 0;
+}
+
+.main-content.seminars p {
+    text-align: left;
+    font-size: 16px;
+}
+
+.main-content.seminars h4 {
+    color: darkcyan;
+    text-shadow: 1px 1px 2px black;
+}
+
+.main-content.seminars figure img {
+    max-width: 100%;
+    height: auto;
 }
 
 
