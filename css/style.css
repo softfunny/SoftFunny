@@ -288,6 +288,10 @@ main header h1, main section header h1 {
     font-size: 14px;
 }
 
+#team-member-interview article p.answer {
+    margin-bottom: 25px;
+}
+
 .formee {
     min-width: 80%;
     float: right;
