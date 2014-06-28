@@ -292,6 +292,31 @@ main header h1, main section header h1 {
     margin-bottom: 25px;
 }
 
+/*Styling for seminars page*/
+
+#seminars {
+    max-width: 80%;
+    min-width: 80%;
+    float: right;
+    margin: 5px 0;
+}
+
+#seminars article {
+    color: #11224D;
+    padding: 2%;
+}
+
+#seminars article figure {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.cyan-big {
+    color: darkcyan;
+    font-weight:bold;
+    font-size:1.2em;
+}
+
 .formee {
     min-width: 80%;
     float: right;
