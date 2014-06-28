@@ -218,19 +218,22 @@ main header h1, main section header h1 {
 
 /* Section Styling About Page */
 #team {
-    display: inline-block;
-    margin: 5px;
-    width: 100%;
+    max-width: 80%;
+    min-width: 80%;
+    float: right;
+    text-align: center;
 }
 #team figure {
     margin: 5px;
     float: left;
     display: block;
+    width: 170px;
 }
 #team figcaption {
     color: black;
     font-weight: bold;
     text-align: left;
+    font-size: 12px;
 }
 #team img {
     border: 10px solid #ffffff;
