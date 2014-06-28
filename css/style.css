@@ -269,38 +269,21 @@ main header h1, main section header h1 {
 
 /*Styling for team members individual pages*/
 
-#team-member-interview {
-    max-width: 80%;
-    min-width: 80%;
-    float: right;
-    margin: 5px 0;
-    
-}
-
-#team-member-interview header h1 {
-    text-align: right;
-    padding: 5px 30px 5px 0;
-}
-
-#team-member-interview img {
+.team-member-interview img {
     border: 10px solid #ffffff;
     box-shadow: 1px 1px 1px #000, 1px 1px 1px #000;
-    margin: 0 0 0 20px;
-    float:left;
+    margin: 0;
+    float: right;
 }
 
-#team-member-interview article {
-    max-width: 75%;
-    margin: 10px 0 10px 20px;
-    float:left;
-    color: #11224D;
-}
-
-#team-member-interview article p {
+.team-member-interview p {
     font-size: 14px;
+    width: 50%;
+    text-align: left;
+    margin-left: 10px;
 }
 
-#team-member-interview article p.answer {
+.team-member-interview p.answer {
     margin-bottom: 25px;
 }
 
