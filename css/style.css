@@ -278,13 +278,14 @@ main header h1, main section header h1 {
 }
 
 #team-member-interview article {
-    max-width: 80%;
+    max-width: 75%;
     margin: 10px 0 10px 20px;
     float:left;
+    color: #11224D;
 }
 
-#team-member-interview article p{
-    color: #11224D;
+#team-member-interview article p {
+    font-size: 14px;
 }
 
 .formee {
