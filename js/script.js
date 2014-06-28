@@ -1,5 +1,12 @@
 function show() {
-    document.getElementById('menu').classList.toggle('toggle');
+    var menu = document.getElementById('menu');
+
+    if (menu.className === 'toggle') {
+        menu.className = '';
+    }
+    else {
+        menu.className = 'toggle';
+    }
 }
 
 function loginValidation() {
@@ -14,6 +21,13 @@ function registrationValidation() {
             validation('pass', 'Въведете парола') &&
             validation('pass2', 'Въведете парола')) {
         submit('register');
+    }
+}
+
+function contactsValidation() {
+    if (validation('about', 'Моля въведете тема!') &&
+            validation('contacts', 'Моля въведете съобщение!')) {
+        submit('message');
     }
 }
 
@@ -52,7 +66,7 @@ function validation(id, text) {
             element.className = 'formee-error';
             displayMessage('formee-msg-error', text);
 
-            remove('formee-msg-error', 2000);
+            remove('formee-msg-error', 4000);
 
             valid = false;
         }
@@ -64,20 +78,24 @@ function validation(id, text) {
     return valid;
 }
 
-function submit(id) { // TODO: Submit on Enter pressed
-    var button = document.getElementById(id);
-    button.setAttribute('type', 'submit');
-    button.click();
-}
-
 function displayMessage(type, text) {
     var message = document.createElement('div');
     message.setAttribute('class', type);
     message.innerHTML = text;
 
     var main = document.getElementsByTagName('main')[0];
-    //main.insertBefore(message, main.firstChild);
-    main.appendChild(message);
+    var form = document.getElementsByClassName('formee')[0];
+
+    if (!document.getElementsByClassName('formee-msg-error')[0]) {
+        main.insertBefore(message, form); // Before content  
+    }
+}
+
+function submit(id) { // TODO: Submit on Enter pressed
+    var button = document.getElementById(id);
+    button.setAttribute('type', 'submit');
+
+    button.click();
 }
 
 function remove(name, time) {

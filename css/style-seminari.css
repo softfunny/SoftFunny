@@ -1,4 +1,11 @@
+section{
+color:#11224D
+}
 
+article, header, footer, p{
+    max-width: 100%;
+    text-align: center;
+}
 #vervaite {
     font-family: 'PT Sans', Tahoma, sans-serif;
     font-size: 18px;

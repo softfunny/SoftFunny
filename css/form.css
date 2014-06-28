@@ -80,7 +80,7 @@
     top:3px;
 }
 .formee-msg-info, .formee-msg-warning, .formee-msg-error, .formee-msg-success {
-    padding:20px 20px 15px 38px;
+    padding:15px 15px 15px 38px;
     border: 1px solid #ccc;
     display: block;
     height: auto;
@@ -170,29 +170,25 @@
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
-    font-size: 15px;
-}
-.formee-msg-info h3, .formee-msg-warning h3, .formee-msg-error h3, .formee-msg-success h3 {
-    font-size:2em;
-    line-height:1.1em;
-    letter-spacing:-.02em;
-    padding:0;
-    margin:0 0 .3em 0;
+    font-size: 18px;
+    display: inline-block;
+    min-width: 50%;
+    margin: 1px auto;
 }
 .formee-msg-info {
-    background: #d1ecf7 url(../img/icons/form-ic-info.png) no-repeat 12px 23px;
+    background: #d1ecf7 url(../img/icons/form-ic-info.png) no-repeat 12px 18px;
     border-color:#bcdfef;
 }
 .formee-msg-warning {
-    background: #fff6bf url(../img/icons/form-ic-warning.png) no-repeat 12px 23px;
+    background: #fff6bf url(../img/icons/form-ic-warning.png) no-repeat 12px 18px;
     border-color:#fceb77;
 }
 .formee-msg-error {
-    background: #fad0d0 url(../img/icons/form-ic-error.png) no-repeat 12px 23px;
+    background: #fad0d0 url(../img/icons/form-ic-error.png) no-repeat 12px 18px;
     border-color:#f6abab;
 }
 .formee-msg-success {
-    background: #e5f8ce url(../img/icons/form-ic-success.png) no-repeat 12px 23px;
+    background: #e5f8ce url(../img/icons/form-ic-success.png) no-repeat 12px 18px;
     border-color:#d0f1a6;
 }
 

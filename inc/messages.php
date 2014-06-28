@@ -13,7 +13,7 @@ if (isset($notice['warning'])) {
 }
 if (isset($notice['success'])) {
 
-        foreach ($notice['success'] as $m) {
-            echo '<div class="formee-msg-success">' . $m . '</div>';
-        }
+    foreach ($notice['success'] as $m) {
+        echo '<div class="formee-msg-success">' . $m . '</div>';
     }
+}

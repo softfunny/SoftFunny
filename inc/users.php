@@ -1,10 +1,7 @@
 <?php
-echo '<aside class="user-panel">';
 
 if (isset($_SESSION['username'])) {
-    echo $_SESSION['username'] . ' [<a href="inc/logout.php">logout</a>]';
+    echo '<span class="right strong bold">' . $_SESSION['username'] . ' [<a href="logout" class="strong">logout</a>]</span> <a href="post" title="Публикувай" class="button left">Публикувай</a>';
 } else {
-    echo 'Guest [<a href="login">login</a>]';
+    echo '<a href="login" class="button right" title="Вход в системата">Вход</a> <a href="register" title="Регистрирай се!" class="button left">Регистрация</a>';
 }
-
-echo '</aside><main>';
