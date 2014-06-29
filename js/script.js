@@ -36,13 +36,13 @@ function postValidate() {
     var option = select.options[select.selectedIndex].value;
 
     switch (option) {
-        case 'joke':
+        case 'jokes':
             if (validation('title', 'Заглавието трябва да е попълнено!') &&
                     validation('content', 'Напишете съдържание!')) {
                 submit('post');
             }
             break;
-        case 'picture':
+        case 'pictures':
             if (validation('file', 'Изберете файл за качване!') &&
                     validation('pic-title', 'Напишете заглавие за картинката!')) {
                 submit('post');
@@ -114,6 +114,7 @@ function changeInputFormat() {
     var select = document.getElementById('category-select');
     var inputFiled = document.getElementById('input-field');
     var textField = document.getElementById('text-field');
+    var form = document.getElementsByTagName('form')[0];
 
     var option = select.options[select.selectedIndex].value;
 
@@ -125,15 +126,18 @@ function changeInputFormat() {
     }
 
     switch (option) {
-        case 'joke':
+        case 'jokes':
+            form.removeAttribute('enctype');
             inputFiled.appendChild(createInput('text', 'title', 'Заглавие...'));
             textField.appendChild(createTextarea('content'));
             break;
-        case 'picture':
+        case 'pictures':
+            form.setAttribute('enctype', 'multipart/form-data');
             inputFiled.appendChild(createInput('file', 'file', ''));
             textField.appendChild(createInput('text', 'pic-title', 'Заглавие...'));
             break;
         case 'video':
+            form.removeAttribute('enctype');
             inputFiled.appendChild(createInput('text', 'url', 'URL...'));
             textField.appendChild(createInput('text', 'vid-title', 'Заглавие...'));
             break;

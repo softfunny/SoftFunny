@@ -43,11 +43,11 @@ if (isset($_POST['REGISTER'])) {
     if (!isset($notice)) {
         $ip = ip2long($_SERVER['REMOTE_ADDR']);
         $level = "1";
-        
+
         $email = $email ? $email : $username;
 
         $insert = 'INSERT INTO users (id, username, password, email, ip, level)
-		   VALUES (NULL, "' . $username . '", "' . $pass1 . '", "' . $email . '", "' . $ip . '", "' . $level . '");';
+		   VALUES (NULL, "' . $username . '", "' . md5($pass1) . '", "' . $email . '", "' . $ip . '", "' . $level . '");';
 
         if (mysqli_query($db, $insert)) {
             $_SESSION['username'] = $username;
@@ -69,36 +69,74 @@ if (isset($_POST['POST'])) {
 
     // Picture
     $picTitle = escape($_POST['pic-title']);
-    $picDesc = escape($_POST['pic-desc']);
-    $source = escape($_POST['file']);
 
     // Video
     $vidTitle = escape($_POST['vid-title']);
-    $vidDesc = escape($_POST['vid-desc']);
-    $vidUrl = escape($_POST['url']);
+    $url = str_replace('watch?v=', 'embed/', escape($_POST['url']));
 
+    // Sign up the information
+    if ($category == 'pictures') {
+        $title = $picTitle;
+        $content = checkUpload();
+    } else if ($category == 'video') {
+        $title = $vidTitle;
+        $content = $url;
+    }
 
-    if ($category == 'joke') {
-        // Sign up the information
-        $insert = 'INSERT INTO entries (id, author, time, title, content)
+    $insert = 'INSERT INTO ' . $category . ' (id, author, time, title, content)
                    VALUES (NULL,' . $_SESSION['id'] . ', ' . time() . ', "' . $title . '", "' . $content . '");'
-                or die(mysqli_error());
-        if (mysqli_query($db, $insert)) {
-            $notice['success'][] = 'Благодарим за публикацията!';
-            echo $returnToIndex;
-        } else {
-            $notice['error'][] = $errorText;
-        }
-    }
-    if ($category == 'picture') {
-        
-    }
-    if ($category == 'video') {
-        
+            or die(mysqli_error());
+    if (mysqli_query($db, $insert)) {
+        $notice['success'][] = 'Благодарим за публикацията!';
+        echo $returnToIndex;
+    } else {
+        $notice['error'][] = $errorText;
     }
 }
 
 function escape($post) {
     mysqli_real_escape_string($db, trim($post));
     return $post;
+}
+
+// UPLOAD
+function checkUpload() {
+    $path = 'uploads' . DIRECTORY_SEPARATOR . 'pictures' . DIRECTORY_SEPARATOR;
+    $max_upload_size = 2000000;
+    $allowedTypes = array('image/pjpeg', 'image/jpeg', 'image/jpg', 'image/x-png', 'image/png', 'image/gif');
+    
+    if (isset($_FILES['file'])) {
+        if (is_uploaded_file($_FILES['file']['tmp_name'])) {
+
+            // Validation
+            if ($_FILES['file']['size'] > $max_upload_size) {
+                $notice['warning'][] = 'The file is too big!';
+            }
+            if (in_array($_FILES['file']['type'], $allowedTypes)) {
+                $notice['error'][] = '<strong>Wrong file type!</strong><br />
+			<strong>Allowed Types:</strong> txt, png, jpe, jpeg, jpg, gif, bmp';
+            }
+            if (file_exists($path . $_FILES['file']['name'])) {
+                $notice['warning'][] = 'The file already exist!';
+            }
+
+            // TODO: Validate!
+            if (!isset($notice)) {
+                if (move_uploaded_file($_FILES['file']['tmp_name'], $path . $_FILES['file']['name'])) {
+                    $notice['success'][] = 'The file '
+                            . $_FILES['upload']['name'] . ' is successfully uploaded!';
+                } else {
+                    $notice['error'][] = 'The file '
+                            . $_FILES['file']['name'] . ' is NOT uploaded!';
+                }
+            }
+
+            // Delete the file if it still exists
+            if (file_exists($_FILES['file']['tmp_name']) && is_file($_FILES['file']['tmp_name'])) {
+                unlink($_FILES['file']['tmp_name']);
+            }
+        }
+
+        return $path . $_FILES['file']['name'];
+    }
 }

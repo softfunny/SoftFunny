@@ -29,14 +29,9 @@ include $template . 'header.html';
 include $includes . 'users.php';
 include $includes . 'messages.php';
 
-if ($page === 'index') {
+if ($page === 'index' || !include $template . $page . '.html') {
     include $includes . 'content.php';
-} else {
-    if (!include $template . $page . '.html') { // Check if the page exists
-        include $template . '404.html';
-        //include 'inc/content.php';
-    }
-}
+} 
 
 include $template . 'aside.html';
 include $template . 'footer.html';
