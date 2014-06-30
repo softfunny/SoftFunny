@@ -314,7 +314,18 @@ form, section, aside {
     height: auto;
 }
 
-
+/*Styling for studies page*/
+.main-content.paid figure img{
+    max-width: 100%;
+}
+.main-content.paid figcaption{
+    font-style: italic;
+    font-size: 14px;
+    color: darkcyan;
+}
+.main-content.paid p{
+    margin-bottom: 15px;
+}
 /* Button */
 a.button {
     margin: 10px;
