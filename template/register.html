@@ -1,4 +1,4 @@
-<form class="formee" method="post" action="register">
+<form class="formee" method="post" action="register" onsubmit="return validate(this);">
     <fieldset>
         <legend>Регистрация</legend>
         <div class="grid-6-12">
@@ -22,7 +22,7 @@
         </div>
 
         <div class="grid-12-12 clear">
-            <input type="button" name="REGISTER" id="register" value="Регистрирай ме" onclick="registrationValidation()">
+            <input type="submit" name="REGISTER" id="register" value="Регистрирай ме">
         </div>
     </fieldset>
 </form>

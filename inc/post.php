@@ -3,11 +3,13 @@
 $errorText = 'Възникна грешка! Моля опитайте отново.';
 $returnToIndex = '<meta http-equiv="refresh" content="0; url=index">';
 $usernameTaken = 'Потребителското име или Email-а са вече в употреба!';
+$errorLogin = 'Грешни входни данни!';
+
 
 // LOGIN
 if (isset($_POST['LOGIN'])) {
     $username = escape($_POST['username']);
-    $pass1 = escape($_POST['pass1']);
+    $pass1 = escape(md5($_POST['pass1']));
 
     $check = 'SELECT * FROM users WHERE username="' . $username . '" AND password="' . $pass1 . '"';
     $result = mysqli_query($db, $check);
@@ -19,7 +21,7 @@ if (isset($_POST['LOGIN'])) {
         $_SESSION['level'] = $row['level'];
         echo $returnToIndex;
     } else {
-        $notice['error'][] = 'Грешни входни данни!';
+        $notice['error'][] = $errorLogin;
     }
 }
 
@@ -42,12 +44,13 @@ if (isset($_POST['REGISTER'])) {
 // Sign up the information
     if (!isset($notice)) {
         $ip = ip2long($_SERVER['REMOTE_ADDR']);
-        $level = "1";
+        $level = '1';
 
         $email = $email ? $email : $username;
+        $pass1 = md5($pass1);
 
-        $insert = 'INSERT INTO users (id, username, password, email, ip, level)
-		   VALUES (NULL, "' . $username . '", "' . md5($pass1) . '", "' . $email . '", "' . $ip . '", "' . $level . '");';
+        $insert = "INSERT INTO users (id, username, password, email, ip, level)
+                   VALUES (NULL, '{$username}', '{$pass1}', '{$email}', '{$ip}', '{$level}');" or die(mysqli_error());
 
         if (mysqli_query($db, $insert)) {
             $_SESSION['username'] = $username;
@@ -86,6 +89,7 @@ if (isset($_POST['POST'])) {
     $insert = 'INSERT INTO ' . $category . ' (id, author, time, title, content)
                    VALUES (NULL,' . $_SESSION['id'] . ', ' . time() . ', "' . $title . '", "' . $content . '");'
             or die(mysqli_error());
+    
     if (mysqli_query($db, $insert)) {
         $notice['success'][] = 'Благодарим за публикацията!';
         echo $returnToIndex;
@@ -103,8 +107,7 @@ function escape($post) {
 function checkUpload() {
     $path = 'uploads' . DIRECTORY_SEPARATOR . 'pictures' . DIRECTORY_SEPARATOR;
     $max_upload_size = 2000000;
-    $allowedTypes = array('image/pjpeg', 'image/jpeg', 'image/jpg', 'image/x-png', 'image/png', 'image/gif');
-    
+
     if (isset($_FILES['file'])) {
         if (is_uploaded_file($_FILES['file']['tmp_name'])) {
 
@@ -112,15 +115,9 @@ function checkUpload() {
             if ($_FILES['file']['size'] > $max_upload_size) {
                 $notice['warning'][] = 'The file is too big!';
             }
-            if (in_array($_FILES['file']['type'], $allowedTypes)) {
-                $notice['error'][] = '<strong>Wrong file type!</strong><br />
-			<strong>Allowed Types:</strong> txt, png, jpe, jpeg, jpg, gif, bmp';
-            }
             if (file_exists($path . $_FILES['file']['name'])) {
                 $notice['warning'][] = 'The file already exist!';
             }
-
-            // TODO: Validate!
             if (!isset($notice)) {
                 if (move_uploaded_file($_FILES['file']['tmp_name'], $path . $_FILES['file']['name'])) {
                     $notice['success'][] = 'The file '
