@@ -89,7 +89,7 @@ if (isset($_POST['POST'])) {
     $insert = 'INSERT INTO ' . $category . ' (id, author, time, title, content)
                    VALUES (NULL,' . $_SESSION['id'] . ', ' . time() . ', "' . $title . '", "' . $content . '");'
             or die(mysqli_error());
-    
+
     if (mysqli_query($db, $insert)) {
         $notice['success'][] = 'Благодарим за публикацията!';
         echo $returnToIndex;
@@ -136,4 +136,16 @@ function checkUpload() {
 
         return $path . $_FILES['file']['name'];
     }
+}
+
+// EMAIL SENDER
+if (isset($_POST["email"])) {
+    $from = $_POST["email"];
+    $subject = $_POST["subject"];
+    $message = $_POST["message"];
+    $message = wordwrap($message, 70);
+
+    // send mail
+    mail('admin@i.softuni-friends.org', $subject, $message, 'От: $from\n');
+    $notice['success'][] = 'Благодарим Ви за обратната връзка!';
 }

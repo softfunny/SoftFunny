@@ -1,17 +1,20 @@
 <form class="formee" method="post" action="contacts" onsubmit="return validate(this);">
     <fieldset>
         <legend>Контакти</legend>
-
-        <div class="grid-6-12">
-            <input type="text" name="about" id="about" placeholder="Относно...">
+        <div class="grid-5-12">
+            <input type="text" name="subject" id="subject" placeholder="Относно">
+        </div>
+        
+        <div class="grid-4-12">
+            <input type="email" name="from" id="from" placeholder="Email">
         </div>
 
         <div class="grid-9-12 clear">
-            <textarea id="contacts" name="contacts" placeholder="Съобщение..."></textarea>
+            <textarea id="contacts" name="message" placeholder="Съобщение"></textarea>
         </div>
 
         <div class="grid-12-12 clear">
-            <input type="submit" name="send" id="message" value="Прати">
+            <input type="submit" name="email" id="message" value="Прати">
         </div>
     </fieldset>
 </form>

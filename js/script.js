@@ -1,3 +1,34 @@
+function showContent(id) {
+    var mainContent = document.getElementsByClassName('main-content')[0].innerHTML = '';
+    var element = document.getElementById(id);
+    console.log(id);
+}
+
+
+function post(path, params, method) {
+    method = method || 'post';
+    params = { p: path};
+    
+    var form = document.createElement('form');
+    form.setAttribute('method', method);
+    //form.setAttribute('action', path);
+    
+    
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute('type', 'hidden');
+            hiddenField.setAttribute('name', key);
+            hiddenField.setAttribute('value', params[key]);
+
+            form.appendChild(hiddenField);
+         }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+}
+
 function show() {
     var menu = document.getElementById('menu');
     menu.className === 'toggle' ? menu.className = '' : menu.className = 'toggle';
@@ -17,14 +48,14 @@ function validateForms(form, tag) {
     for (var i = 0; i < arrInputs.length; i++) {
         var currentInput = arrInputs[i];
         var currentValue = currentInput.value;
-        var name = currentInput.getAttribute('placeholder') || 'Поле';
-        
+        var name = currentInput.getAttribute('placeholder') || 'поле';
+
         // Validate text fields 
         if (currentInput.type === 'text' || currentInput.type === 'password' || tag === 'textarea') {
 
             if (currentValue.length < minValue || currentValue.length > maxValue) {
                 displayMessage(currentInput.id, error,
-                        (name + 'то трябва да има стойности между ' + minValue + ' и ' + maxValue + ' символа!'));
+                        ('Полето "<strong>' + name + '</strong>" трябва да съдържа най-малко ' + minValue + ' символа!'));
                 return false;
             }
             else {
@@ -111,7 +142,7 @@ function changeInputFormat() {
         case 'jokes':
             form.removeAttribute('enctype');
             inputFiled.appendChild(createInput('input', 'text', 'title', 'Заглавие'));
-            textField.appendChild(createInput('textarea', '', 'content', ''));
+            textField.appendChild(createInput('textarea', '', 'content', 'Публикация'));
             break;
         case 'pictures':
             form.setAttribute('enctype', 'multipart/form-data');

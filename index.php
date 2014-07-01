@@ -5,6 +5,7 @@ include 'inc/config.php';
 $url = new path('/');
 $page = $url->segment(1) ? $url->segment(1) : 'index';
 $isLogged = isset($_SESSION['username']);
+$categories = array('jokes', 'pictures', 'video');
 
 if ($page == 'logout') {
     session_start();
@@ -28,10 +29,13 @@ if ($isLogged) {
 include $template . 'header.html';
 include $includes . 'users.php';
 include $includes . 'messages.php';
-
-if ($page === 'index' || !include $template . $page . '.html') {
-    include $includes . 'content.php';
-} 
+    
+if ($page === 'index' || in_array($page, $categories)) {
+    include $includes . 'home.php';
+}
+else if(!include $template . $page . '.html') {
+        include $template . '404.html';
+}
 
 include $template . 'aside.html';
 include $template . 'footer.html';
