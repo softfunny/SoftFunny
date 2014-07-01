@@ -20,7 +20,7 @@ while ($post = mysqli_fetch_assoc($select_comments)) {
 }
 
 if ($isLogged) {
-    echo "<form class='formee' method='post' action='/' onsubmit='return validate(this);'>
+    echo "<form class='formee comments' method='post' action='/' onsubmit='return validate(this);'>
         <fieldset>
             <legend>Коментирай</legend>
             <div class='grid-9-12 clear' id='text-field'>

@@ -186,7 +186,12 @@ header h1 {
     color: #11224D;
     padding: 2%;
 }
-.main-content  .formee {
+
+.formee {
+    width: 80%;
+    float:right;
+}
+.comments {
     float: left;
 }
 
@@ -270,7 +275,6 @@ header h1 {
     padding: 3px;
     color: white;
 }
-
 
 /* Team About Page */
 .team {
@@ -399,13 +403,6 @@ a.button:hover {
     color: white;
     background: #11224D;
     border: 2px solid #11224D;
-}
-.formee {
-    width: 80%;
-    float:right;
-}
-.formee .comments {
-    margin: 0 auto;
 }
 
 /* Main Aside */

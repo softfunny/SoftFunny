@@ -55,7 +55,7 @@
             $post = $row['content'];
 
             if (isset($_POST[p])) {
-                echo "<article class='article'>";
+                echo "<header><h1>$headings[$i]</h1></header><article class='article'>";
                 $title = $link . $row['title'] . '</a>';
                 $article = $post;
             } else {
