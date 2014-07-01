@@ -60,8 +60,8 @@
                 $article = $post;
             } else {
                 echo "<article class='post $cat'>";
-                $title = $link . cutText($row['title'], 30) . '</a>';
-                $article = cutText($post, 130) . $link . 'още</a>';
+                $title = $link . cutText($row['title'], 45) . '</a>';
+                $article = cutText($post, 130);
             }
 
             if ($cat == 'jokes') { // JOKES

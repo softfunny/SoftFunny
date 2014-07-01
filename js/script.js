@@ -39,7 +39,7 @@ function validate(form) {
 function validateForms(form, tag) {
     var error = 'formee-msg-error';
     var minValue = 3;
-    var maxValue = 3000;
+    var maxValue = 30000;
     var arrInputs = form.getElementsByTagName(tag);
 
     for (var i = 0; i < arrInputs.length; i++) {
@@ -50,17 +50,21 @@ function validateForms(form, tag) {
         // Validate text fields 
         if (currentInput.type === 'text' || currentInput.type === 'password' || tag === 'textarea') {
 
-            if (currentValue.length < minValue || currentValue.length > maxValue) {
+            if (currentValue.length < minValue) {
                 displayMessage(currentInput.id, error,
                         ('Полето "<strong>' + name + '</strong>" трябва да съдържа най-малко ' + minValue + ' символа!'));
                 return false;
+            }
+            else if (currentValue.length > maxValue) {
+                displayMessage(currentInput.id, error,
+                        ('Полето "<strong>' + name + '</strong>" съдържа твърде много символи!'));
             }
             else {
                 currentInput.className = '';
             }
         }
         else if (currentInput.type === 'file') { // Validate file uploads
-            var validFileExtensions = ['.jpg', '.jpeg', '.bmp', '.gif', '.png'];
+            var validFileExtensions = ['.jpg', '.jpeg', '.bmp', '.png'];
 
             if (currentValue.length > 0) {
                 var isValidFormat = false;
