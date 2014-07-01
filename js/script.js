@@ -4,15 +4,12 @@ function showContent(id) {
     console.log(id);
 }
 
-
 function post(path, params, method) {
     method = method || 'post';
     params = { p: path};
     
     var form = document.createElement('form');
     form.setAttribute('method', method);
-    //form.setAttribute('action', path);
-    
     
     for(var key in params) {
         if(params.hasOwnProperty(key)) {

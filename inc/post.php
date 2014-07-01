@@ -6,6 +6,19 @@ $usernameTaken = 'Потребителското име или Email-а са в�
 $errorLogin = 'Грешни входни данни!';
 
 
+if (isset($_POST['jokes']) || isset($_POST['pictures']) || isset($_POST['video'])) {
+    
+    $insert = 'INSERT INTO comments (comment_id, author_id, date_added, comment, post_id)
+                   VALUES (NULL,' . $_SESSION['id'] . ',  ' . time() . ', "' . $_POST['content'] . '", "' . $_POST['post_id'] . '");'
+            or die(mysqli_error());
+
+    if (mysqli_query($db, $insert)) {
+        $notice['success'][] = 'Благодарим за коментара!';
+    } else {
+        $notice['error'][] = $errorText;
+    }
+}
+
 // LOGIN
 if (isset($_POST['LOGIN'])) {
     $username = escape($_POST['username']);

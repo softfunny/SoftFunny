@@ -19,23 +19,20 @@ if ($isLogged) {
         $notice['success'][] = 'Вие вече сте влезли в системата!';
         $page = 'index';
     }
-} else {
-    if ($page == 'post') {
-        $notice['error'][] = 'Трябва да влезете за достъп до тази страница!';
-        $page = 'index';
-    }
+} else if ($page == 'post') {
+    $notice['error'][] = 'Трябва да влезете за достъп до тази страница!';
+    $page = 'index';
 }
 
-include $template . 'header.html';
-include $includes . 'users.php';
-include $includes . 'messages.php';
-    
+require $template . 'header.html';
+require $includes . 'users.php';
+require $includes . 'messages.php';
+
 if ($page === 'index' || in_array($page, $categories)) {
-    include $includes . 'home.php';
-}
-else if(!include $template . $page . '.html') {
-        include $template . '404.html';
+    require $includes . 'home.php';
+} else if (!include $template . $page . '.html') {
+    include $template . '404.html';
 }
 
-include $template . 'aside.html';
-include $template . 'footer.html';
+require $template . 'aside.html';
+require $template . 'footer.html';
