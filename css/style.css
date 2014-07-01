@@ -285,9 +285,9 @@ form, section, aside {
     margin-bottom: 25px;
 }
 
-/*Styling for Seminars Page*/
+/*Styling for Seminars Page and Payments Page*/
 
-.main-content.seminars figcaption {
+.main-content.seminars figcaption, .main-content.payments-content figcaption {
     font-style: italic;
     font-size: 14px;
 }
@@ -299,7 +299,20 @@ form, section, aside {
     margin: 0;
 }
 
-.main-content.seminars p {
+.main-content.payments-content footer h3, .main-content.payments-content h4 {
+    font-size: 20px;
+    font-weight: bold;
+    font-style: normal;
+    margin: 15px 0;
+    color: darkorange;
+    text-shadow: 1px 1px 3px black;
+}
+
+.main-content.payments-content h4 span {
+    color: darkcyan;
+}
+
+.main-content.seminars p, .main-content.payments-content p {
     text-align: left;
     font-size: 16px;
 }
@@ -309,7 +322,7 @@ form, section, aside {
     text-shadow: 1px 1px 2px black;
 }
 
-.main-content.seminars figure img {
+.main-content.seminars figure img, .main-content.payments-content img {
     max-width: 100%;
     height: auto;
 }
