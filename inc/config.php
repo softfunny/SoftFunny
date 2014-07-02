@@ -10,5 +10,6 @@ $siteUrl = 'http://i.softuni-friends.org/';
 $template = 'template/';
 $includes = 'inc/';
 
+include 'functions.php';
 include 'path.php';
 include 'post.php';

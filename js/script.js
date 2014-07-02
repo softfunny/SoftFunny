@@ -1,31 +1,3 @@
-function showContent(id) {
-    var mainContent = document.getElementsByClassName('main-content')[0].innerHTML = '';
-    var element = document.getElementById(id);
-    console.log(id);
-}
-
-function post(path, params, method) {
-    method = method || 'post';
-    params = { p: path};
-    
-    var form = document.createElement('form');
-    form.setAttribute('method', method);
-    
-    for(var key in params) {
-        if(params.hasOwnProperty(key)) {
-            var hiddenField = document.createElement("input");
-            hiddenField.setAttribute('type', 'hidden');
-            hiddenField.setAttribute('name', key);
-            hiddenField.setAttribute('value', params[key]);
-
-            form.appendChild(hiddenField);
-         }
-    }
-
-    document.body.appendChild(form);
-    form.submit();
-}
-
 function show() {
     var menu = document.getElementById('menu');
     menu.className === 'toggle' ? menu.className = '' : menu.className = 'toggle';

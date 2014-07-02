@@ -187,12 +187,13 @@ header h1 {
     padding: 2%;
 }
 
-.formee {
+.main-content .formee {
+    width: 80%;
+    margin: 0 auto !important;
+}
+main > .formee {
     width: 80%;
     float:right;
-}
-.comments {
-    float: left;
 }
 
 .post {
@@ -430,21 +431,25 @@ a.button:hover {
     border-radius: 5px;
     text-shadow: 1px 1px 1px #000;
 }
+.aside-nav {
+    margin-bottom: 20px;
+}
 .aside-nav ul li a:hover {
     text-shadow: none;
     border-bottom: solid #11224D 2px;
 }
 
 /* Footer */
-.main-footer {
+.main-footer, .main-footer a {
     background-image: url('../img/footer-bkg.png');
     padding: 10px;
     margin: 20px 0;
     border-radius: 2px;
     text-align: center;
+    color: #ffe789;
 }
 .main-footer a:hover {
-    color: #ffe789;
+    color: #cececf;
 }
 
 /* Screens */

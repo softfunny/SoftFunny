@@ -6,6 +6,7 @@ $select_comments = mysqli_query($db, 'SELECT * FROM comments LEFT JOIN users
 
 while ($post = mysqli_fetch_assoc($select_comments)) {
     $date = date('d.m.Y, H:i:s', $post['date_added']);
+    $post_id = $post[id];
     if ($post != 0) {
         echo '<section class="comment">
                 <header>
@@ -15,16 +16,16 @@ while ($post = mysqli_fetch_assoc($select_comments)) {
                 <p>' . $post['comment'] . '</p>
               </section>';
     } else {
-        echo '<div class="formee-msg-info">There is no comments at the moment!</div>';
+        echo '<div class="formee-msg-info">Все още няма коментари!</div>';
     }
 }
 
 if ($isLogged) {
-    echo "<form class='formee comments' method='post' action='/' onsubmit='return validate(this)'>
+    echo "<form class='formee comments' method='post' action='$cat/$post_id' onsubmit='return validate(this)'>
         <fieldset>
             <legend>Коментирай</legend>
             <div class='grid-9-12 clear' id='text-field'>
-                <textarea name='content' id='content' placeholder='Публикация'></textarea>
+                <textarea name='content' id='content' placeholder='Коментар'></textarea>
             </div>
             <div class='grid-12-12 clear'>
                 <input type='submit' name='$cat' id='post' value='Публикувай'>

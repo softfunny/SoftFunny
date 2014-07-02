@@ -5,9 +5,8 @@ $returnToIndex = '<meta http-equiv="refresh" content="0; url=index">';
 $usernameTaken = 'Потребителското име или Email-а са вече в употреба!';
 $errorLogin = 'Грешни входни данни!';
 
-
 if (isset($_POST['jokes']) || isset($_POST['pictures']) || isset($_POST['video'])) {
-    
+
     $insert = 'INSERT INTO comments (comment_id, author_id, date_added, comment, post_id)
                    VALUES (NULL,' . $_SESSION['id'] . ',  ' . time() . ', "' . $_POST['content'] . '", "' . $_POST['post_id'] . '");'
             or die(mysqli_error());
@@ -108,46 +107,6 @@ if (isset($_POST['POST'])) {
         echo $returnToIndex;
     } else {
         $notice['error'][] = $errorText;
-    }
-}
-
-function escape($post) {
-    mysqli_real_escape_string($db, trim($post));
-    return $post;
-}
-
-// UPLOAD
-function checkUpload() {
-    $path = 'uploads' . DIRECTORY_SEPARATOR . 'pictures' . DIRECTORY_SEPARATOR;
-    $max_upload_size = 2000000;
-
-    if (isset($_FILES['file'])) {
-        if (is_uploaded_file($_FILES['file']['tmp_name'])) {
-
-            // Validation
-            if ($_FILES['file']['size'] > $max_upload_size) {
-                $notice['warning'][] = 'The file is too big!';
-            }
-            if (file_exists($path . $_FILES['file']['name'])) {
-                $notice['warning'][] = 'The file already exist!';
-            }
-            if (!isset($notice)) {
-                if (move_uploaded_file($_FILES['file']['tmp_name'], $path . $_FILES['file']['name'])) {
-                    $notice['success'][] = 'The file '
-                            . $_FILES['upload']['name'] . ' is successfully uploaded!';
-                } else {
-                    $notice['error'][] = 'The file '
-                            . $_FILES['file']['name'] . ' is NOT uploaded!';
-                }
-            }
-
-            // Delete the file if it still exists
-            if (file_exists($_FILES['file']['tmp_name']) && is_file($_FILES['file']['tmp_name'])) {
-                unlink($_FILES['file']['tmp_name']);
-            }
-        }
-
-        return $path . $_FILES['file']['name'];
     }
 }
 

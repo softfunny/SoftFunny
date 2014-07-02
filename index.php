@@ -1,9 +1,10 @@
 <?php
-
 include 'inc/config.php';
 
 $url = new path('/');
 $page = $url->segment(1) ? $url->segment(1) : 'index';
+$page_id = str_replace('/', '', $url->segment(2));
+
 $isLogged = isset($_SESSION['username']);
 $categories = array('jokes', 'pictures', 'video');
 

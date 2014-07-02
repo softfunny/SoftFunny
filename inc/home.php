@@ -1,73 +1,57 @@
 <section class="main-content">
     <?php
-
-    function selectTable($db, $table, $limit) {
-        if (isset($_POST[p])) {
-            $select = " AND e.id = " . $_POST[p];
-        }
-
-        return mysqli_query($db, "SELECT e.id, e.title, e.content, e.time, u.username
-				 FROM $table as e, users as u
-				 WHERE e.author = u.id $select
-				 ORDER BY e.time DESC LIMIT $limit;");
-    }
-
-    if ($page == 'index') {
-        $limit = 3;
-    } else {
-        $categories = array($page);
-        $limit = 100;
-    }
-
     $headings = array('Вицове и бисери', 'Смешни снимки', 'Смешни клипове');
 
     switch ($page) {
-        case 'jokes': $headings = array($headings[0]);
+        case 'index' : $limit = 3;
             break;
-        case 'pictures': $headings = array($headings[1]);
+        case 'jokes':
+            $headings = array($headings[0]);
+            $categories = array($categories[0]);
+            $limit = 50;
             break;
-        case 'video': $headings = array($headings[2]);
+        case 'pictures':
+            $headings = array($headings[1]);
+            $categories = array($categories[1]);
+            $limit = 20;
             break;
-    }
-
-    function cutText($text, $length) {
-        $article = strip_tags($text);
-
-        if (strlen($article) > $length) {
-            $articleCut = substr($article, 0, $length);
-            $article = substr($articleCut, 0, strrpos($articleCut, ' ')) . '...';
-        }
-
-        return $article;
+        case 'video':
+            $limit = 10;
+            $headings = array($headings[2]);
+            $categories = array($categories[2]);
+            break;
     }
 
     for ($i = 0; $i < count($categories); ++$i) {
         $cat = $categories[$i];
-        $content = selectTable($db, $cat, $limit);
 
-        if(!isset($_POST[p])) {
-            echo '<header><h1>' . $headings[$i] . '</h1></header>';
+        if ($url->segment(2)) {
+            $content = selectTable($db, $cat, 1, $page_id);
         }
-        while ($row = mysqli_fetch_array($content)) {
+        else {
+             $content = selectTable($db, $cat, $limit);
+        }
 
-            $link = "<a href='#' onclick='post($row[id])'>";
+        echo '<header><h1>' . $headings[$i] . '</h1></header>';
+
+        while ($row = mysqli_fetch_array($content)) {
+            $cat_id = $row[id];
+            $link = "<a href='$siteUrl"."$cat/$cat_id'>";
             $postInfo = '<p class="post-info"> от ' . $row['username'] . ' на ' . date('d.m.Y', $row['time']) . '</p>';
             $post = $row['content'];
 
-            if (isset($_POST[p])) {
-                echo "<header><h1>$headings[$i]</h1></header><article class='article'>";
-                $title = $link . $row['title'] . '</a>';
+            if ($url->segment(2)) {
+                $title = '<h2>' . $link . $row['title'] . '</a></h2>';
                 $article = $post;
             } else {
                 echo "<article class='post $cat'>";
-                $title = $link . cutText($row['title'], 45) . '</a>';
+                $title = '<h2>' . $link . cutText($row['title'], 45) . '</a></h2>';
                 $article = cutText($post, 130);
             }
-
             if ($cat == 'jokes') { // JOKES
                 echo
                 "<header>
-                    <h2>$title</a></h2>
+                    $title
                         $postInfo
                 </header>
                 <p>$article</p>
@@ -75,24 +59,25 @@
             } else if ($cat == 'pictures') { // PICTURES
                 echo
                 "<figure>
-                    <h2>$title</h2>
+                    $title
                         $link<img src='$siteUrl" . "$post' alt='$row[title]'></a>
                     <figcaption>$postInfo</figcaption>
                     </figure>
                 </article>";
             } else if ($cat == 'video') { // VIDEOS
                 echo
-                "<h2>$title</h2>
+                "$title
                     <iframe class='video' src='$post' allowfullscreen></iframe>
                         $postInfo
                 </article>";
             }
-            if (isset($_POST[p])) {
+            if ($isLogged && $url->segment(2)) {
                 include $includes . 'comments.php';
-                break;
+            }
+            else if ($url->segment(2)) {
+                echo '<br><div class="formee-msg-warning clear">Моля <strong><a href="http://i.softuni-friends.org/login">влезте</a></strong> в системата за да коментирате!</div>';
             }
         }
     }
     ?>
-</form>
 </section>
