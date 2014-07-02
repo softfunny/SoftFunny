@@ -71,7 +71,7 @@
                         $postInfo
                 </article>";
             }
-            if ($isLogged && $url->segment(2)) {
+            if ($url->segment(2)) {
                 include $includes . 'comments.php';
             }
             else if ($url->segment(2)) {
