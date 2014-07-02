@@ -123,6 +123,7 @@
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
+    text-shadow: 1px 1px 2px black;
 }
 
 /* form elements  */
