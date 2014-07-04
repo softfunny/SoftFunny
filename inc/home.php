@@ -42,8 +42,8 @@
             $post = $row['content'];
 
             if (!$url->segment(2)) {
-                echo "<article class='post $cat'>";
-                $post = cutText($post, 130);
+                echo "<article class='post'>";
+                $post = cutText($post, 320);
             }
             
             if ($cat == 'jokes') { // JOKES
@@ -51,7 +51,7 @@
                         $title
                         $postInfo
                       </header>
-                      <p>$post</p>
+                      <p class='$cat'>$post</p>
                     </article>";
             } else if ($cat == 'pictures') { // PICTURES
                 echo "<figure class='$cat'>
