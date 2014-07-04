@@ -17,7 +17,7 @@ function validateForms(form, tag) {
     for (var i = 0; i < arrInputs.length; i++) {
         var currentInput = arrInputs[i];
         var currentValue = currentInput.value;
-        var name = currentInput.getAttribute('placeholder') || 'поле';
+        var name = currentInput.getAttribute('placeholder') || '';
 
         // Validate text fields 
         if (currentInput.type === 'text' || currentInput.type === 'password' || tag === 'textarea') {
@@ -124,7 +124,7 @@ function changeInputFormat() {
             break;
         case 'video':
             form.removeAttribute('enctype');
-            inputFiled.appendChild(createInput('input', 'text', 'url', 'URL поле'));
+            inputFiled.appendChild(createInput('input', 'text', 'url', 'URL'));
             textField.appendChild(createInput('input', 'text', 'vid-title', 'Заглавие'));
             break;
     }

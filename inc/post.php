@@ -111,7 +111,7 @@ if (isset($_POST['POST'])) {
 }
 
 // EMAIL SENDER
-if (isset($_POST["email"])) {
+if (isset($_POST["mail"])) {
     $from = $_POST["email"];
     $subject = $_POST["subject"];
     $message = $_POST["message"];

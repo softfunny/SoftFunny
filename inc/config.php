@@ -6,7 +6,7 @@ mysqli_query($db, 'SET NAMES utf8');
 
 session_start();
 
-$siteUrl = 'http://i.softuni-friends.org/';
+$siteUrl = 'http://i.i.softuni-friends.org';
 $template = 'template/';
 $includes = 'inc/';
 

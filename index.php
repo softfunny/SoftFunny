@@ -1,4 +1,5 @@
 <?php
+
 include 'inc/config.php';
 
 $url = new path('/');
@@ -29,7 +30,7 @@ require $template . 'header.html';
 require $includes . 'users.php';
 require $includes . 'messages.php';
 
-if ($page === 'index' || in_array($page, $categories)) {
+if ($page === 'index' || $page == 'i' || in_array($page, $categories)) {
     require $includes . 'home.php';
 } else if (!include $template . $page . '.html') {
     include $template . '404.html';

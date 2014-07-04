@@ -32,50 +32,41 @@
              $content = selectTable($db, $cat, $limit);
         }
 
-        echo '<header><h1>' . $headings[$i] . '</h1></header>';
+        echo "<header><h1><a href='$siteUrl/$cat'>$headings[$i]</a></h1></header>";
 
         while ($row = mysqli_fetch_array($content)) {
             $cat_id = $row[id];
-            $link = "<a href='$siteUrl"."$cat/$cat_id'>";
+            $link = "<a href='$siteUrl/$cat/$cat_id' title='$row[title]'>";
+            $title = "<h2>$link$row[title]</a></h2>";
             $postInfo = '<p class="post-info"> от ' . $row['username'] . ' на ' . date('d.m.Y', $row['time']) . '</p>';
             $post = $row['content'];
 
-            if ($url->segment(2)) {
-                $title = '<h2>' . $link . $row['title'] . '</a></h2>';
-                $article = $post;
-            } else {
+            if (!$url->segment(2)) {
                 echo "<article class='post $cat'>";
-                $title = '<h2>' . $link . cutText($row['title'], 45) . '</a></h2>';
-                $article = cutText($post, 130);
+                $post = cutText($post, 130);
             }
+            
             if ($cat == 'jokes') { // JOKES
-                echo
-                "<header>
-                    $title
+                echo "<header>
+                        $title
                         $postInfo
-                </header>
-                <p>$article</p>
-            </article>";
+                      </header>
+                      <p>$post</p>
+                    </article>";
             } else if ($cat == 'pictures') { // PICTURES
-                echo
-                "<figure>
-                    $title
-                        $link<img src='$siteUrl" . "$post' alt='$row[title]'></a>
-                    <figcaption>$postInfo</figcaption>
-                    </figure>
-                </article>";
+                echo "<figure class='$cat'>
+                        $title$link<img src='$siteUrl/$post' alt='$row[title]'></a>
+                        <figcaption>$postInfo</figcaption>
+                      </figure>
+                    </article>";
             } else if ($cat == 'video') { // VIDEOS
-                echo
-                "$title
-                    <iframe class='video' src='$post' allowfullscreen></iframe>
+                echo "$title
+                        <iframe class='$cat' src='$post' allowfullscreen></iframe>
                         $postInfo
-                </article>";
+                    </article>";
             }
             if ($url->segment(2)) {
                 include $includes . 'comments.php';
-            }
-            else if ($url->segment(2)) {
-                echo '<br><div class="formee-msg-warning clear">Моля <strong><a href="http://i.softuni-friends.org/login">влезте</a></strong> в системата за да коментирате!</div>';
             }
         }
     }

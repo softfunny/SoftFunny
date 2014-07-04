@@ -34,3 +34,6 @@ if ($isLogged) {
         </fieldset>
         </form>";
 }
+ else {
+    echo "<div class='formee-msg-info'>Моля <a href='$siteUrl/login'><strong>влезте в профила си</strong></a> за да коментирате!</div><br><br>";
+}

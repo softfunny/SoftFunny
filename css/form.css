@@ -10,13 +10,14 @@
 
 /* Form Structure */
 .formee fieldset {
-    border: 1px solid #d4d4d4;
+    border: 1px solid #ff7813;
     position: relative;
     height:100%;
     padding: 1.2em 0;
     margin: 0 0 4em;
 }
 .formee legend {
+    width: 200px;
     margin-left:1%;
     margin-right:1%;
     padding: 0.5% 0.5% 0.8%;

@@ -61,7 +61,6 @@ h5 {
 }
 h1, h2, h3, h4, h5 {
     font-weight: 400;
-    margin: .2em 0 1em 0
 }
 
 a:link, a:visited {
@@ -120,6 +119,7 @@ form, section, aside {
 }
 header h1 {
     color: white;
+    margin-bottom: 20px;
 }
 
 /* Header TODO */
@@ -173,13 +173,20 @@ header h1 {
 }
 
 .main-content header h1 {
-    background-color: #11224D;
     padding: 10px;
     text-align: center;
     font-size: 20px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     text-shadow: 1px 1px 1px #000;
+    background-color: #11224D;
+}
+
+.main-content header h1 a {
+    color: #fefefe;
+}
+.main-content header h1 a:hover {
+    color: #ffe789;
 }
 
 .main-content article {
@@ -197,11 +204,10 @@ main > .formee {
 }
 
 .post {
-    max-width: 25%;
-    min-height: 170px;
+    max-width: 27%;
     display: inline-block;
     padding: 15px;
-    margin: 0 20px 30px 0;
+    margin: 0 20px 10px 0;
     border-radius: 10px;
     color: #ffffff;
     background-color: #ff7813;
@@ -210,13 +216,15 @@ main > .formee {
     box-shadow: 1px 1px 2px #11224D;
 }
 .pictures img {
-    width: 100%;
-    max-height: 200px;
-    min-height: 150px;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
 }
-.video iframe {
-    width: 100%;
-    min-height: 190px;
+.post .video {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 30%;
 }
 .article {
     margin: 20px auto; 
@@ -264,6 +272,7 @@ main > .formee {
 }
 
 .post header h2 {
+    white-space: nowrap;
     background-color: #11224D;
     font-size: 16px;
     text-align: center;
@@ -473,6 +482,9 @@ a.button:hover {
         min-width: 90%;
         margin-right: 0;
     }
+    .post .video {
+        min-height: 50%;
+    }
 }
 @media screen and (max-width: 768px) {
     .main-nav ul {
@@ -524,5 +536,8 @@ a.button:hover {
     }
     .formee div {
         width: 97%;
+    }
+    .post .video {
+        min-height: 40%;
     }
 }

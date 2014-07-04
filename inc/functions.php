@@ -11,8 +11,8 @@ function cutText($text, $length) {
     return $article;
 }
 
-function escape($post) {
-    mysqli_real_escape_string($db, trim($post));
+function escape(&$post) {
+    mysqli_real_escape_string(trim($post), $db);
     return $post;
 }
 
