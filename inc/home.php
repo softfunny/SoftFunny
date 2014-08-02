@@ -43,7 +43,7 @@
 
             if (!$url->segment(2)) {
                 echo "<article class='post'>";
-                $post = cutText($post, 320);
+                $post = cutText($post, 195);
             }
             
             if ($cat == 'jokes') { // JOKES

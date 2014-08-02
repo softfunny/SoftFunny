@@ -168,7 +168,7 @@ header h1 {
 }
 
 .main-content h2 {
-    font-size: 1.2em;
+    font-size: 1.1em;
     overflow: hidden;
 }
 
@@ -229,7 +229,7 @@ main > .formee {
     box-shadow: 1px 1px 2px #000, 1px 1px 2px #000;
 }
 .post header h2 a {
-    display: block;
+    display: inline-block;
     padding: 3px;
     color: white;
 }
@@ -247,6 +247,7 @@ main > .formee {
     margin-top: 10px;
     max-width: 100%;
     min-height: 100px;
+    text-align: left;
 }
 .pictures img {
     display: block;
@@ -254,10 +255,19 @@ main > .formee {
     max-width: 100%;
     max-height: 30%;
 }
+.pictures a {
+    display: inline-block;
+    margin-bottom: 10px;
+}
 .video {
+    margin-top: 10px;
     min-height: 25%;
     min-width: 100%;
     max-width: 100%;
+}
+.main-content > .pictures img {
+    max-width: 100%;
+    max-height: 100%;
 }
 .main-content > .video {
     min-height: 50%;
